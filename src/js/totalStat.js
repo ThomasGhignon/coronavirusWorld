@@ -28,8 +28,6 @@ export default class TotalStat{
 
     $.getJSON(api.endpoint)
       .then((response) =>{
-        console.log(response);
-        console.log(response.cases);
         this.renderTotalStat(response.cases, response.deaths, response.recovered);
       })
       .catch((e) =>{
@@ -40,6 +38,5 @@ export default class TotalStat{
       this.$els.totalConfirmed.text(cases);
       this.$els.totalRecovered.text(recovered);
       this.$els.totalDeaths.text(deaths);
-      /*this.$els.main.addClass('is-ready');*/
     }
   }
