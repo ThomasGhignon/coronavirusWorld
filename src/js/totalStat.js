@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import Chart from 'chart.js';
 
 
 
@@ -39,4 +40,9 @@ export default class TotalStat{
       this.$els.totalRecovered.text(recovered);
       this.$els.totalDeaths.text(deaths);
     }
+
+
+
+  /*var myChart = new Chart(ctx, {...});*/
+
   }

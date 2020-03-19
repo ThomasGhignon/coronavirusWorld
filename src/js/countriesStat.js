@@ -28,19 +28,12 @@ export default class CountriesStat{
       .then((response) =>{
         var countries_response = [];
         $(response).each( (i , item) => {
-          /*countries_response[i] = {
-            "nameCountry":this.country,
-            "confirmedCountry":this.cases,
-            "recoveredCountry":this.recovered,
-            "deathsCountry":this.deaths,
-          }*/
           this.renderCountriesStat(item);
         });
       })
       .catch((e) =>{
         console.log('error with the quote :', e);
       });
-
   }
 
   renderCountriesStat(item){
