@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import Mustache from 'mustache';
+/*import PlayerTemplate from './templates/countries.hbs';*/
 
 
 export default class CountriesStat{
@@ -36,8 +36,9 @@ export default class CountriesStat{
             "recoveredCountry":this.recovered,
             "deathsCountry":this.deaths,
           }
+          console.log(countries_response[i]);
         });
-        this.renderCountriesStat(countries_response);
+        /*this.renderCountriesStat(countries_response);*/
       })
       .catch((e) =>{
         console.log('error with the quote :', e);
@@ -47,8 +48,8 @@ export default class CountriesStat{
   }
 
   renderCountriesStat(data){
-    var template = this.$els.countriesTemplate.html();
-    var rendered = Mustache.render(template, {dataCountries: data});
+    /*var template = this.$els.countriesTemplate.html();
+    var rendered = Mustache.render(template, {dataCountries: data});*/
     /*this.$els.countriesContainer.html(rendered);*/
   }
 }
