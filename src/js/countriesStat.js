@@ -1,8 +1,5 @@
 import $ from 'jquery';
-import compiledTemplate from "handlebars";
-import Items from './templates/countries.hbs';
-/*import PlayerTemplate from './templates/countries.hbs';*/
-
+import CountriesTemplate from './templates/countries.hbs';
 
 export default class CountriesStat{
   constructor(){
@@ -18,10 +15,10 @@ export default class CountriesStat{
   }
 
   initEvents(){
-    this.getTotalStat();
+    this.getCountriesStat();
   }
 
-  getTotalStat(){
+  getCountriesStat(){
     const api = {
       endpoint:'https://corona.lmao.ninja/countries',
     };
@@ -30,27 +27,27 @@ export default class CountriesStat{
     $.getJSON(api.endpoint)
       .then((response) =>{
         var countries_response = [];
-        $(response).each(function(i){
-          countries_response[i] = {
+        $(response).each( (i , item) => {
+          /*countries_response[i] = {
             "nameCountry":this.country,
             "confirmedCountry":this.cases,
             "recoveredCountry":this.recovered,
             "deathsCountry":this.deaths,
-          }
-          /*console.log(countries_response[i]);*/
+          }*/
+          this.renderCountriesStat(item);
         });
-        /*this.renderCountriesStat(countries_response);*/
       })
       .catch((e) =>{
         console.log('error with the quote :', e);
       });
 
-      //fix Mustache !!!
   }
 
-  renderCountriesStat(data){
-    /*var template = this.$els.countriesTemplate.html();
-    var rendered = Mustache.render(template, {dataCountries: data});*/
-    /*this.$els.countriesContainer.html(rendered);*/
+  renderCountriesStat(item){
+    var rendered = CountriesTemplate(item);
+    this.$els.countriesContainer.append(rendered);
   }
+
+
+
 }
