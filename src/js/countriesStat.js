@@ -1,4 +1,6 @@
 import $ from 'jquery';
+import compiledTemplate from "handlebars";
+import Items from './templates/countries.hbs';
 /*import PlayerTemplate from './templates/countries.hbs';*/
 
 
@@ -10,8 +12,8 @@ export default class CountriesStat{
 
   initEls(){
     this.$els ={
-      countriesTemplate: $('.js-countriesTemplate'),
-      /*countriesContainer: $('.js-countriesContainer'),*/
+      /*countriesTemplate: $('.js-countriesTemplate'),*/
+      countriesContainer: $('.js-countriesContainer'),
     }
   }
 
@@ -27,7 +29,6 @@ export default class CountriesStat{
 
     $.getJSON(api.endpoint)
       .then((response) =>{
-        console.log(response);
         var countries_response = [];
         $(response).each(function(i){
           countries_response[i] = {
@@ -36,7 +37,7 @@ export default class CountriesStat{
             "recoveredCountry":this.recovered,
             "deathsCountry":this.deaths,
           }
-          console.log(countries_response[i]);
+          /*console.log(countries_response[i]);*/
         });
         /*this.renderCountriesStat(countries_response);*/
       })
