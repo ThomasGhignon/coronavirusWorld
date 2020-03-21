@@ -1,7 +1,4 @@
 import $ from 'jquery';
-import Chart from 'chart.js';
-
-
 
 export default class TotalStat{
   constructor(){
@@ -13,7 +10,7 @@ export default class TotalStat{
     this.$els ={
       totalConfirmed: $('.js-totalConfirmed'),
       totalRecovered: $('.js-totalRecovered'),
-      totalDeaths: $('.js-totalDeaths')
+      totalDeaths: $('.js-totalDeaths'),
     }
   }
 
@@ -40,9 +37,4 @@ export default class TotalStat{
       this.$els.totalRecovered.text(recovered);
       this.$els.totalDeaths.text(deaths);
     }
-
-
-
-  /*var myChart = new Chart(ctx, {...});*/
-
-  }
+}
