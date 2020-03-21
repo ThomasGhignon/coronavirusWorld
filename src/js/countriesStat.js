@@ -1,7 +1,8 @@
 import $ from 'jquery';
 import CountriesTemplate from './templates/countries.hbs';
 import Chart from 'chart.js';
-import {getDailyCasesByCountry} from "./helpers/chartHelper"
+import {getCountryDailyCases} from "./helpers/chartHelper"
+import {getCountryName} from "./helpers/chartHelper"
 import {getArrayByDailyCasesOrder} from "./helpers/chartHelper"
 
 export default class CountriesStat{
@@ -51,34 +52,45 @@ export default class CountriesStat{
   }
 
 
-  makeDailyCases(data, request){
-    return getDailyCasesByCountry(data, request);
+  /*makeDailyCases(data){
+    return getDailyCasesByCountry(data);
   }
-
+*/
   totalChart(data){
     console.log(data);
+    var countryName = getCountryName(data);
+    var countryDailyCases = getCountryDailyCases(data);
+
     var myChart = new Chart(this.$els.dailyCases, {
         type: 'bar',
         data: {
-            labels: [this.makeDailyCases(data, "country")],
+            labels: [countryName[0],countryName[1],countryName[2],countryName[3],countryName[4],countryName[5],countryName[6],countryName[7],countryName[8],countryName[9]],
             datasets: [{
-                label: '# of Votes',
-                data: [this.makeDailyCases(data, "todayCases")],
+                label: 'Daily cases',
+                data: [countryDailyCases[0],countryDailyCases[1],countryDailyCases[2],countryDailyCases[3],countryDailyCases[4],countryDailyCases[5],countryDailyCases[6],countryDailyCases[7],countryDailyCases[8],countryDailyCases[9]],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(108,92,231, 0.2)',
+                    'rgba(0, 0, 0, 0.2)',
+                    'rgba(0, 0, 0, 0.2)',
+                    'rgba(0, 0, 0, 0.2)',
+                    'rgba(0, 0, 0, 0.2)',
+                    'rgba(0, 0, 0, 0.2)',
+                    'rgba(0, 0, 0, 0.2)',
+                    'rgba(0, 0, 0, 0.2)',
+                    'rgba(0, 0, 0, 0.2)',
+                    'rgba(0, 0, 0, 0.2)',
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    'rgba(108,92,231, 1)',
+                    'rgba(0, 0, 0, 1)',
+                    'rgba(0, 0, 0, 1)',
+                    'rgba(0, 0, 0, 1)',
+                    'rgba(0, 0, 0, 1)',
+                    'rgba(0, 0, 0, 1)',
+                    'rgba(0, 0, 0, 1)',
+                    'rgba(0, 0, 0, 1)',
+                    'rgba(0, 0, 0, 1)',
+                    'rgba(0, 0, 0, 1)',
                 ],
                 borderWidth: 1
             }]
