@@ -39,7 +39,7 @@ export default class CountriesStat{
           this.renderCountriesStat(item);
           daily_cases[i] = response[i];
         });
-        this.totalChart(this.makeArrayByOrder(daily_cases)); //faut il appeler le helper avec une autre fonction
+        this.totalChart(this.makeArrayByOrder(daily_cases));
       })
       .catch((e) =>{
         console.log('error with the quote :', e);
@@ -51,11 +51,6 @@ export default class CountriesStat{
     this.$els.countriesContainer.append(rendered);
   }
 
-
-  /*makeDailyCases(data){
-    return getDailyCasesByCountry(data);
-  }
-*/
   totalChart(data){
     console.log(data);
     var countryName = getCountryName(data);
