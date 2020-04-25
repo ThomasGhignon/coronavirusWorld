@@ -28,7 +28,7 @@ export default class CountriesStat{
 
   getCountriesStat(){
     const api = {
-      endpoint:'https://corona.lmao.ninja/countries',
+      endpoint:'https://corona.lmao.ninja/v2/countries',
     };
     $.ajaxSetup({cache:false});
 

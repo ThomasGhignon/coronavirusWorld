@@ -20,7 +20,7 @@ export default class TotalStat{
 
   getTotalStat(){
     const api = {
-      endpoint: 'https://corona.lmao.ninja/all',
+      endpoint: 'https://corona.lmao.ninja/v2/all',
     };
     $.ajaxSetup({cache:false});
 
